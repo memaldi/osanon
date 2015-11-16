@@ -23,7 +23,7 @@
                 {{distance.center.pc}}, {{distance.center.town}}, {% if distance.center.province == 'BK'%}Bizkaia{% elif distance.center.province == 'GP' %}Araba{% elif distance.center.province == 'AB' %}Araba{% endif %}
               </address>
               <b>Distancia:</b> {{distance.distance.distance.text}}
-              <a href="https://www.google.com/maps/dir/{{origin.0}},{{origin.1}}/{{center.lat}},{{center.lng}}"><i class="fa fa-map-marker"></i></a>
+              <a href="https://www.google.com/maps/dir/{{origin.0}},{{origin.1}}/{{distance.center.lat}},{{distance.center.lng}}"><i class="fa fa-map-marker"></i></a>
             </div>
           </div>
         </div>

@@ -19,31 +19,27 @@ def getText(item):
                 return child.data
 
 def getCoordinates(address, town=None):
-    r = requests.get(GOOGLE_MAPS_URL, params={'address': address.replace(' ', '+'), 'key': API_KEY, 'language': 'es'})
-    json_result = r.json()
-    if 'results' in json_result:
-        for result in json_result['results']:
-            for component in result['address_components']:
-                if town is not None:
-                    if 'locality' in component['types'] and town in component['short_name']:
-                        lat = result['geometry']['location']['lat']
-                        lng = result['geometry']['location']['lng']
-                        return lat, lng
-                if 'administrative_area_level_1' in component['types'] and 'PV' in component['short_name']:
-                    lat = result['geometry']['location']['lat']
-                    lng = result['geometry']['location']['lng']
-                    return lat, lng
     if town is not None:
         r = requests.get(GOOGLE_MAPS_URL, params={'address': address.replace(' ', '+') + '+%s' % town, 'key': API_KEY, 'language': 'es'})
         json_result = r.json()
         if 'results' in json_result:
             for result in json_result['results']:
                 for component in result['address_components']:
-                    if town is not None:
-                        if 'locality' in component['types'] and town in component['short_name']:
-                            lat = result['geometry']['location']['lat']
-                            lng = result['geometry']['location']['lng']
-                            return lat, lng
+                    if 'locality' in component['types'] and town in component['short_name']:
+                        lat = result['geometry']['location']['lat']
+                        lng = result['geometry']['location']['lng']
+                        return lat, lng
+                    elif 'administrative_area_level_1' in component['types'] and 'PV' in component['short_name']:
+                        lat = result['geometry']['location']['lat']
+                        lng = result['geometry']['location']['lng']
+                        return lat, lng
+
+    else:
+        r = requests.get(GOOGLE_MAPS_URL, params={'address': address.replace(' ', '+'), 'key': API_KEY, 'language': 'es'})
+        json_result = r.json()
+        if 'results' in json_result:
+            for result in json_result['results']:
+                for component in result['address_components']:
                     if 'administrative_area_level_1' in component['types'] and 'PV' in component['short_name']:
                         lat = result['geometry']['location']['lat']
                         lng = result['geometry']['location']['lng']
