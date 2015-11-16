@@ -1,0 +1,94 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+
+  <div id="map"></div>
+
+  <div class="starter-template">
+    {% for distance in distances %}
+      {% with counter=forloop.counter %}
+        {% if not counter|divisibleby:2 %}
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+        {% endif %}
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title">{{distance.center.center_type}} {{distance.center.name}}</h3></div>
+            <div class="panel-body">
+              <address>
+                <strong>{{distance.center.center_type}} {{distance.center.name}}</strong><br>
+                {{distance.center.street}}<br>
+                {{distance.center.pc}}, {{distance.center.town}}, {% if distance.center.province == 'BK'%}Bizkaia{% elif distance.center.province == 'GP' %}Araba{% elif distance.center.province == 'AB' %}Araba{% endif %}
+              </address>
+              <b>Distancia:</b> {{distance.distance.distance.text}}
+              <a href="https://www.google.com/maps/dir/{{origin.0}},{{origin.1}}/{{center.lat}},{{center.lng}}"><i class="fa fa-map-marker"></i></a>
+            </div>
+          </div>
+        </div>
+        {% if counter|divisibleby:2 %}
+          <div class="col-md-2">
+          </div>
+          </div>
+        {% endif %}
+      {% endwith %}
+    {% endfor %}
+  </div>
+
+  <nav>
+    <ul class="pager">
+      <li class="{% if offset|add:"-1" <= 0 %}disabled{% endif %}"><a href="{{path}}/{{offset|add:"-1"}}">Previous</a></li>
+      <li class="{% if offset|add:"1" > pagination|length %}disabled{% endif %}"><a href="{{path}}/{{offset|add:"1"}}">Next</a></li>
+    </ul>
+  </nav>
+{% endblock %}
+
+{% block scripts %}
+
+  <script type="text/javascript">
+    var markers = [
+      {% for distance in distances %}
+        ['{{distance.center.name}}', {{distance.center.lat}}, {{distance.center.lng}}, '{{distance.center.street}}', '{{distance.distance.distance.text}}']
+        {% if not forloop.last %}
+          ,
+        {% endif %}
+      {% endfor %}
+    ];
+
+    function setMarkers(map) {
+      for (var i = 0; i < markers.length; i++) {
+        var contentString = '<h1>' + markers[i][0] + '</h1><address>' + markers[i][3] + '</address><b>Distancia: </b>' + markers[i][4] + ' <a href="https://www.google.com/maps/dir/{{origin.0}},{{origin.1}}/' + markers[i][1] + ',' + markers[i][2] + '"><i class="fa fa-map-marker"></i></a>';
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        var marker = new google.maps.Marker({
+          position: {lat: markers[i][1], lng: markers[i][2]},
+          map: map,
+          title: markers[i][0],
+          html: contentString
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+          // where I have added .html to the marker object.
+          infowindow.setContent(this.html);
+          infowindow.open(map, this);
+        });
+      }
+    }
+
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: {{origin.0}}, lng: {{origin.1}}},
+        zoom: 14
+      });
+      setMarkers(map);
+    }
+
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZNxeqEd3DhPuBfia4neLIqUczo3T9flc&callback=initMap">
+  </script>
+{% endblock %}

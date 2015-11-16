@@ -15,7 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from core import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', views.index),
+    url(r'^results/(?P<lat>\-?\d+\.\d+)/(?P<lng>\-?\d+\.\d+)$', views.results_coordinates),
+    url(r'^results/(?P<lat>\-?\d+\.\d+)/(?P<lng>\-?\d+\.\d+)/(?P<offset>\d+)$', views.results_coordinates),
+    url(r'^results/address$', views.results_address),
 ]
