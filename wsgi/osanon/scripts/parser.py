@@ -7,7 +7,19 @@ import requests
 import codecs
 import json
 
-CENTROS_DE_SALUD_URL = 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/centros_salud_en_euskadi/opendata/centros-salud.xml'
+URL_DICT = { 'es': { 'Farmacias': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/farmacias_de_euskadi/opendata/farmacias.xml',
+                     'Hospitales': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/hospitales_en_euskadi/opendata/hospitales.xml',
+                     'Centros de salud': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/centros_salud_en_euskadi/opendata/centros-salud.xml',
+                     'Botiquines': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/botiquines_en_euskadi/opendata/botiquines.xml',
+                     'Centros comarcales': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/centros_comarcales_en_euskadi/opendata/comarcas.xml'
+             },
+             'eu': {'Farmaziak': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/farmacias_de_euskadi/opendata/farmaziak.xml',
+                    'Ospitaleak': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/hospitales_en_euskadi/opendata/ospitaleak.xml',
+                    'Osasun zentroak': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/centros_salud_en_euskadi/opendata/osasun-zentroak.xml',
+                    'Botikinak': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/botiquines_en_euskadi/opendata/botikinak.xml',
+                    'Eskualde zentroak': 'http://opendata.euskadi.eus/contenidos/ds_localizaciones/centros_comarcales_en_euskadi/opendata/eskualdeak.xml'
+             }
+}
 
 API_KEY = GOOGLE_MAPS_KEY
 GOOGLE_MAPS_URL = 'https://maps.googleapis.com/maps/api/geocode/json'
@@ -48,31 +60,36 @@ def getCoordinates(address, town=None):
     return None, None
 
 def loadDB():
-    r = requests.get(CENTROS_DE_SALUD_URL)
-    dom = parseString(codecs.encode(r.text, 'utf-8'))
-    for item in dom.getElementsByTagName('row'):
-        center = Center()
-        center.name = getText(item.getElementsByTagName('sanidadname'))
-        address = getText(item.getElementsByTagName('sanidadstreet'))
-        center.street = address
+    for lang in URL_DICT:
+        for item_type in URL_DICT[lang]:
+            r = requests.get(URL_DICT[lang][item_type])
+            dom = parseString(codecs.encode(r.text, 'utf-8'))
+            for item in dom.getElementsByTagName('row'):
+                center = Center()
+                center.name = getText(item.getElementsByTagName('sanidadname'))
+                address = getText(item.getElementsByTagName('sanidadstreet'))
+                center.street = address
 
-        town = getText(item.getElementsByTagName('sanidadtown'))
-        center.town = town
+                town = getText(item.getElementsByTagName('sanidadtown'))
+                center.town = town
+                try:
+                    center.lat, center.lng = getCoordinates(address, town=town)
+                except:
+                    print center.name
+                try:
+                    center.pc = int(getText(item.getElementsByTagName('sanidadpostalcode')))
+                except:
+                    center.pc = None
+                province = getText(item.getElementsByTagName('sanidadprovince'))
+                if province == 'ALAVA':
+                    center.province = Center.ARABA
+                elif province == 'GIPUZKOA':
+                    center.province = Center.GIPUZKOA
+                elif province == 'Bizkaia':
+                    center.province = Center.BIZKAIA
 
-        center.lat, center.lng = getCoordinates(address, town=town)
-        try:
-            center.pc = int(getText(item.getElementsByTagName('sanidadpostalcode')))
-        except:
-            center.pc = None
-        province = getText(item.getElementsByTagName('sanidadprovince'))
-        if province == 'ALAVA':
-            center.province = Center.ARABA
-        elif province == 'GIPUZKOA':
-            center.province = Center.GIPUZKOA
-        elif province == 'Bizkaia':
-            center.province = Center.BIZKAIA
+                # center.center_type = getText(item.getElementsByTagName('sanidadcentertype'))
+                center.center_type = item_type
+                center.language = lang
 
-        center.center_type = getText(item.getElementsByTagName('sanidadcentertype'))
-        center.language = Center.SPANISH
-
-        center.save()
+                center.save()
