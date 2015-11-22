@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,9 +46,9 @@
               <span class="input-group-btn">
                 <a class="btn btn-success" onclick="getLocation()"><i class="fa fa-location-arrow"></i></a>
               </span>
-              <input type="text" placeholder="Tu dirección, p.ej.: Gran Via Bilbao" class="form-control" name="address" required style="display:table-cell;">
+              <input type="text" placeholder="{% trans "Tu dirección, p.ej.: Gran Via Bilbao" %}" class="form-control" name="address" required style="display:table-cell;">
               <span class="input-group-btn">
-                <button type="submit" class="btn btn-success">Buscar</button>
+                <button type="submit" class="btn btn-success">{% trans "Buscar" %}</button>
               </span>
             </div>
           </form>
@@ -59,8 +60,8 @@
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron" style="padding-top:80px;">
         <div class="container">
-          <h1>Bienvenido a Osanon</h1>
-          <p>Osanon te permite buscar el centro de salud, hospital o farmacia más ceranos. Para ello, solamente tienes que buscar una dirección y pulsar <button class="btn btn-success">Buscar</button> o pulsar el botón <a class="btn btn-success" onclick="getLocation()"><i class="fa fa-location-arrow"></i></a> para obtener tu ubicación:</p>
+          <h1>{% trans "Bienvenido a Osanon" %}</h1>
+          <p>{% blocktrans %}Osanon te permite buscar el centro de salud, hospital o farmacia más ceranos. Para ello, solamente tienes que buscar una dirección y pulsar <button class="btn btn-success">Buscar</button> o pulsar el botón <a class="btn btn-success" onclick="getLocation()"><i class="fa fa-location-arrow"></i></a> para obtener tu ubicación:{% endblocktrans %}</p>
           <p>
             <form class="form" action="/results/address" method="POST">
               {% csrf_token %}
@@ -68,9 +69,9 @@
                 <span class="input-group-btn">
                   <a class="btn btn-success" onclick="getLocation()"><i class="fa fa-location-arrow"></i></a>
                 </span>
-                <input type="text" placeholder="Tu dirección, p.ej.: Gran Via Bilbao" class="form-control" name="address" required style="display:table-cell;">
+                <input type="text" placeholder="{% trans "Tu dirección, p.ej.: Gran Via Bilbao" %}" class="form-control" name="address" required style="display:table-cell;">
                 <span class="input-group-btn">
-                  <button type="submit" class="btn btn-success">Buscar</button>
+                  <button type="submit" class="btn btn-success">{% trans "Buscar" %}</button>
                 </span>
               </div>
             </form>
@@ -82,19 +83,16 @@
         <!-- Example row of columns -->
         <div class="row">
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>{% trans "Diseño responsivo" %}</h2>
+            <p> {% blocktrans %}OsaNon está diseñado siguiendo el paradigma de <a href="https://en.wikipedia.org/wiki/Responsive_web_design">responsive web design</a>, por lo que se adaptará a todos los dispositivos ya sean teléfonos móviles, tablets u ordenadores.{% endblocktrans %} </p>
           </div>
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>Open Data</h2>
+            <p>{% blocktrans %}Todos los datos utilizados en OsaNon han sido obtenidos de <a href="opendata.euskadi.eus">Open Data Euskadi</a>.{% endblocktrans %}</p>
          </div>
           <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>{% trans "Colaborativo" %}</h2>
+            <p>{% blocktrans %}Si encuentras algún error, puedes pulsar en el icono <i class="fa fa-flag"></i> para informarnos. Estaremos muy agradecidos de recibir vuestra opinión ;-){% endblocktrans %}</p>
           </div>
         </div>
 

@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+{% load staticfiles %}
+{% load i18n %}
+
+{% block content %}
+  <div class="starter-template">
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <h1>{% trans "Contacto" %}</h1>
+
+        <form class="form form-horizontal" action="/contact" action="post">
+           {% csrf_token %}
+          <div class="form-group {% if form.name.errors %} has-error has-feedback {% endif %}">
+            <label for="{{form.name.id_for_label}}" class="col-sm-2 control-label">{{form.name.label}}</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="name" placeholder="{% trans "Tu nombre" %}">
+            </div>
+          </div>
+          <div class="form-group {% if form.email.errors %} has-error has-feedback {% endif %}">
+            <label for="{{form.email.id_for_label}}" class="col-sm-2 control-label">{{form.email.label}}</label>
+            <div class="col-sm-6">
+              <input type="email" class="form-control" id="name" placeholder="{% trans "Tu email" %}">
+            </div>
+          </div>
+          <div class="form-group {% if form.text.errors %} has-error has-feedback {% endif %}">
+            <label for="{{form.text.id_for_label}}" class="col-sm-2 control-label">{{form.text.label}}</label>
+      			<div class="col-sm-10">
+              <textarea class="form-control" id="{{form.text.id_for_label}}" name="{{form.text.html_name}}" rows="8">{% blocktrans with center_name=center.name %}He encontrado un error en el centro: {{center_name}}{% endblocktrans %}.
+
+Descripición del error:</textarea>
+            </div>
+          </div>
+          <div class="form-group">
+          	<div class="col-sm-offset-2 col-sm-10">
+              {% trans "Enviar" as submit_button %}
+          		<input type="submit" class="btn btn-default" value="{{submit_button}}">
+          	</div>
+        	</div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.utils.translation import get_language
 from core.models import Center
+from core import forms
 import googlemaps
 import collections
 from geopy.distance import vincenty
@@ -10,6 +11,17 @@ from osanon.settings import GOOGLE_MAPS_KEY
 
 def index(request):
     return render(request, 'core/base.html')
+
+def contact(request, center_id):
+    center = Center.objects.get(id=center_id)
+    if request.method == 'POST':
+        form = NameForm(request.POST)
+        if form.is_valid():
+            return render(request, 'core/contact_thanks.html')
+    else:
+        form = forms.ContactForm()
+    context = {'form': form, 'center': center}
+    return render(request, 'core/contact.html', context)
 
 def results_coordinates(request, lat, lng, offset=1):
     lang = 'es'
