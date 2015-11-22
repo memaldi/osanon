@@ -7,7 +7,7 @@ from django.db import models
 class Center(models.Model):
     name = models.CharField(max_length=100)
     pc = models.IntegerField(null=True)
-    street = models.CharField(max_length=200)
+    street = models.CharField(max_length=200, null=True)
     lat = models.FloatField(null=True)
     lng = models.FloatField(null=True)
     BIZKAIA = 'BK'
@@ -37,4 +37,5 @@ class Center(models.Model):
         (SPANISH, 'es'),
         (BASQUE, 'eu')
     )
-    language = models.CharField(max_length=2, choices=LANGUAGE_CHOICES, default=SPANISH)
+    language = models.CharField(max_length=2, default=SPANISH)
+    metadataURL = models.URLField()

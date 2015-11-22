@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.utils.translation import get_language
 from core.models import Center
 import googlemaps
 import collections
@@ -11,10 +12,26 @@ def index(request):
     return render(request, 'core/base.html')
 
 def results_coordinates(request, lat, lng, offset=1):
+    lang = 'es'
+    if get_language() in ['es', 'eu']:
+        lang = get_language()
+
+    filter_list = []
+
+    centers = []
+    if request.method == 'POST':
+        for key in request.POST:
+            if request.POST[key] == 'on':
+                filter_list.append(key)
+                centers.extend(Center.objects.filter(language=lang, center_type=key).all())
+    else:
+        centers = Center.objects.filter(language=lang).all()
+
     print lat, lng
     destinations = {}
     item_count = 0
-    for destination in Center.objects.all():
+
+    for destination in centers:
         if destination.lat is not None and destination.lng is not None:
             # dist = math.hypot(float(lat) - destination.lat, float(lng) - destination.lng)
             dist = vincenty((float(lat), float(lng)), (destination.lat, destination.lng)).kilometers
@@ -36,8 +53,9 @@ def results_coordinates(request, lat, lng, offset=1):
     for item in ordered_list[(int(offset) - 1) * 10:limit]:
         destinations_list.append((item.lat, item.lng))
         print item.name, key, item.lat, item.lng, item.street
+
     gmaps = googlemaps.Client(key=GOOGLE_MAPS_KEY)
-    distances = gmaps.distance_matrix([(float(lat), float(lng))], destinations_list)
+    distances = gmaps.distance_matrix([(float(lat), float(lng))], destinations_list, mode='walking')
 
     distances_dict = []
     for distance, item in zip(distances['rows'][0]['elements'], ordered_list[(int(offset) - 1) * 10:limit]):
@@ -48,7 +66,7 @@ def results_coordinates(request, lat, lng, offset=1):
     path = '/results/%s/%s' % (lat, lng)
     context = {'distances': distances_dict, 'origin': (float(lat), float(lng)),
                'pagination': range(1, pagination_size + 1), 'offset': int(offset),
-               'path': path}
+               'path': path, 'filter_list': filter_list}
 
     return render(request, 'core/results.html', context)
 

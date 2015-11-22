@@ -4,8 +4,48 @@
 {% block content %}
 
   <div id="map"></div>
-
   <div class="starter-template">
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-body">
+        <form class="form form-inline" action="/results/{{origin.0}}/{{origin.1}}/{{offset}}" method="POST">
+          {% csrf_token %}
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="Farmacias" {% if 'Farmacias' in filter_list or filter_list|length == 0 %}checked{% endif %}> Farmacias
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="Hospitales" {% if 'Hospitales' in filter_list or filter_list|length == 0 %}checked{% endif %}> Hospitales
+            </label>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="Centros de salud" {% if 'Centros de salud' in filter_list or filter_list|length == 0 %}checked{% endif %}> Centros de salud
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="Botiquines" {% if 'Botiquines' in filter_list or filter_list|length == 0 %}checked{% endif %}> Botiquines
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" name="Centros comarcales" {% if 'Centros comarcales' in filter_list or filter_list|length == 0 %}checked{% endif %}> Centros comarcales
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default">Filtrar</button>
+        </form>
+      </div>
+      </div>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
     {% for distance in distances %}
       {% with counter=forloop.counter %}
         {% if not counter|divisibleby:2 %}
@@ -15,10 +55,10 @@
         {% endif %}
         <div class="col-md-4">
           <div class="panel panel-default">
-            <div class="panel-heading"><h3 class="panel-title">{{distance.center.center_type}} {{distance.center.name}}</h3></div>
+            <div class="panel-heading"><h3 class="panel-title">{{distance.center.name}}</h3></div>
             <div class="panel-body">
               <address>
-                <strong>{{distance.center.center_type}} {{distance.center.name}}</strong><br>
+                <strong>{{distance.center.name}}</strong><br>
                 {{distance.center.street}}<br>
                 {{distance.center.pc}}, {{distance.center.town}}, {% if distance.center.province == 'BK'%}Bizkaia{% elif distance.center.province == 'GP' %}Araba{% elif distance.center.province == 'AB' %}Araba{% endif %}
               </address>
