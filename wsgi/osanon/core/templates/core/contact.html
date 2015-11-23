@@ -11,18 +11,36 @@
       <div class="col-md-8">
         <h1>{% trans "Contacto" %}</h1>
 
-        <form class="form form-horizontal" action="/contact" action="post">
+        <form class="form form-horizontal" action="/report/{{center.id}}" method="post">
            {% csrf_token %}
           <div class="form-group {% if form.name.errors %} has-error has-feedback {% endif %}">
             <label for="{{form.name.id_for_label}}" class="col-sm-2 control-label">{{form.name.label}}</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="name" placeholder="{% trans "Tu nombre" %}">
+              <input type="text" class="form-control" id="{{form.name.id_for_label}}" name="{{form.name.html_name}}" placeholder="{% trans "Tu nombre" %}">
+              {% if form.name.errors %}
+      					<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        					<span id="inputError2Status" class="sr-only">(error)</span>
+        					<ul>
+        						{% for error in form.name.errors %}
+        							<li><span id="helpBlock" class="help-block">{{ error|escape }}</span></li>
+        						{% endfor %}
+        					<ul>
+      				{% endif %}
             </div>
           </div>
           <div class="form-group {% if form.email.errors %} has-error has-feedback {% endif %}">
             <label for="{{form.email.id_for_label}}" class="col-sm-2 control-label">{{form.email.label}}</label>
             <div class="col-sm-6">
-              <input type="email" class="form-control" id="name" placeholder="{% trans "Tu email" %}">
+              <input type="email" class="form-control" id="{{form.email.id_for_label}}" name="{{form.email.html_name}}" placeholder="{% trans "Tu email" %}">
+              {% if form.email.errors %}
+      					<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+        					<span id="inputError2Status" class="sr-only">(error)</span>
+        					<ul>
+        						{% for error in form.email.errors %}
+        							<li><span id="helpBlock" class="help-block">{{ error|escape }}</span></li>
+        						{% endfor %}
+        					<ul>
+      				{% endif %}
             </div>
           </div>
           <div class="form-group {% if form.text.errors %} has-error has-feedback {% endif %}">
@@ -30,7 +48,16 @@
       			<div class="col-sm-10">
               <textarea class="form-control" id="{{form.text.id_for_label}}" name="{{form.text.html_name}}" rows="8">{% blocktrans with center_name=center.name %}He encontrado un error en el centro: {{center_name}}{% endblocktrans %}.
 
-Descripición del error:</textarea>
+Descripción del error:</textarea>
+              {% if form.text.errors %}
+                <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+                  <span id="inputError2Status" class="sr-only">(error)</span>
+                  <ul>
+                    {% for error in form.text.errors %}
+                      <li><span id="helpBlock" class="help-block">{{ error|escape }}</span></li>
+                    {% endfor %}
+                  <ul>
+              {% endif %}
             </div>
           </div>
           <div class="form-group">

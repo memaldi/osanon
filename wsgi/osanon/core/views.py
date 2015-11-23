@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.utils.translation import get_language
+from django.core.mail import send_mail
 from core.models import Center
 from core import forms
 import googlemaps
@@ -15,8 +16,12 @@ def index(request):
 def contact(request, center_id):
     center = Center.objects.get(id=center_id)
     if request.method == 'POST':
-        form = NameForm(request.POST)
+        form = forms.ContactForm(request.POST)
+        print form
         if form.is_valid():
+            send_mail('[OsaNon] Error en el centro #%s' % center_id,
+                      form.data['text'], form.data['email'],
+                      ['m.emaldi@gmail.com'], fail_silently=False)
             return render(request, 'core/contact_thanks.html')
     else:
         form = forms.ContactForm()

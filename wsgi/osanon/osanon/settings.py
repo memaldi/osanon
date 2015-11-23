@@ -17,6 +17,9 @@ REPO_DIR = os.path.dirname(WSGI_DIR)
 DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', BASE_DIR)
 
 GOOGLE_MAPS_KEY = os.environ.get('GOOGLE_MAPS_KEY', '')
+ON_OPENSHIFT = False
+if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+    ON_OPENSHIFT = True
 
 import sys
 sys.path.append(os.path.join(REPO_DIR, 'libs'))
@@ -120,3 +123,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
     os.path.join(WSGI_DIR, 'static'),
 )
+
+if ON_OPENSHIFT:
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = os.environ['SENDGRID_HOSTNAME']
+    EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+    EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+    EMAIL_PORT = 587
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+    EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
