@@ -40,20 +40,33 @@
           </button>
           <a class="navbar-brand" href="/">OsaNon</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" action="/results/address" method="POST">
-            {% csrf_token %}
-            <div class="input-group" style="display:table;">
-              <span class="input-group-btn">
-                <a class="btn btn-success" onclick="getLocation()"><i class="fa fa-location-arrow"></i></a>
-              </span>
-              <input type="text" placeholder="{% trans "Tu dirección, p.ej.: Gran Via Bilbao" %}" class="form-control" name="address" required style="display:table-cell;">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-success">{% trans "Buscar" %}</button>
-              </span>
-            </div>
-          </form>
-        </div>
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation">
+              <form class="navbar-form navbar-right" action="/results/address" method="POST">
+                {% csrf_token %}
+                <div class="input-group" style="display:table;">
+                  <span class="input-group-btn">
+                    <a class="btn btn-success" onclick="getLocation()"><i class="fa fa-location-arrow"></i></a>
+                  </span>
+                  <input type="text" placeholder="{% trans "Tu dirección, p.ej.: Gran Via Bilbao" %}" class="form-control" name="address" required style="display:table-cell;">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-success">{% trans "Buscar" %}</button>
+                  </span>
+                </div>
+              </form>
+            </li>
+            <li class="presentation">
+              <form class="navbar-form navbar-right" name="setLang" action="{% url 'set_language' %}" method="POST">{% csrf_token %}
+                  <select name="language" onchange="document.setLang.submit();return false;" class="form-control">
+                      <option {% if LANGUAGE_CODE == "eu" %}selected{% endif %} value="eu">Euskera</option>
+                      <option {% if LANGUAGE_CODE == "es" %}selected{% endif %} value="es">Español</option>
+                  </select>
+                  <input name="next" type="hidden" value="/" />
+              </form>
+            </li>
+          </ul>
+        </nav>
       </div>
     </nav>
 
@@ -100,14 +113,18 @@
         <hr>
       {% endblock %}
       <footer style="padding-left: 50px;">
-        <form class="span1 pull-left" name="setLang" action="{% url 'set_language' %}" method="POST">{% csrf_token %}
-                <select name="language" onchange="document.setLang.submit();return false;">
-                    <option {% if LANGUAGE_CODE == "eu" %}selected{% endif %} value="eu">Euskera</option>
-                    <option {% if LANGUAGE_CODE == "es" %}selected{% endif %} value="es">Español</option>
-                </select>
-                <input name="next" type="hidden" value="/" />
-            </form>
-
+        <br />
+        {% block adsense_footer %}
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- index.html -->
+          <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px;"
+             data-ad-client="ca-pub-8496090600652315"
+             data-ad-slot="7017747386"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        {% endblock %}
       </footer>
     </div> <!-- /container -->
 
