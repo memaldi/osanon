@@ -40,7 +40,7 @@
           </button>
           <a class="navbar-brand" href="/">OsaNon</a>
         </div>
-        <nav>
+        <div class="navbar-collapse collapse">
           <ul class="nav nav-pills pull-right">
             <li role="presentation">
               <form class="navbar-form navbar-right" action="/results/address" method="POST">
@@ -66,7 +66,7 @@
               </form>
             </li>
           </ul>
-        </nav>
+        </div>
       </div>
     </nav>
 
@@ -114,14 +114,15 @@
       {% endblock %}
       <footer style="padding-left: 50px;">
         {% block adsense_footer %}
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-            <!-- index.html -->
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- index-adaptable -->
           <ins class="adsbygoogle"
-             style="display:inline-block;width:728px;height:90px;margin:auto;"
+             style="display:block"
              data-ad-client="ca-pub-8496090600652315"
-             data-ad-slot="7017747386"></ins>
+             data-ad-slot="5900940982"
+             data-ad-format="auto"></ins>
           <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
+          (adsbygoogle = window.adsbygoogle || []).push({});
           </script>
         {% endblock %}
       </footer>
