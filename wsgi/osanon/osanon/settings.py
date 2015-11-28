@@ -65,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 # GETTING-STARTED: change 'myproject' to your project name:
@@ -103,9 +104,15 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ES'
 
-TIME_ZONE = 'UTC'
+LANGUAGES = (
+    ('es', 'Spanish'),
+    ('eu', 'Basque'),
+)
+
+
+TIME_ZONE = 'Europe/Madrid'
 
 USE_I18N = True
 
@@ -133,3 +140,12 @@ if ON_OPENSHIFT:
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
     EMAIL_FILE_PATH = '/tmp/app-messages' # change this to a proper location
+
+if ON_OPENSHIFT:
+    LOCALE_PATHS = (
+        os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'pelotus', 'translations'),
+    )
+else:
+    LOCALE_PATHS = (
+        '/Users/memaldi/virtualenvs/osanon/src/osanon/wsgi/osanon/translations',
+    )

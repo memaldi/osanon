@@ -11,7 +11,7 @@
       <div class="col-md-8">
         <div class="panel panel-default">
           <div class="panel-body">
-        <form class="form form-inline" action="/results/{{origin.0}}/{{origin.1}}/{{offset}}" method="POST">
+        <form class="form form-inline" action="/results/{{origin.0|stringformat:"f"}}/{{origin.1|stringformat:"f"}}/{{offset}}" method="POST">
           {% csrf_token %}
           <div class="checkbox">
             <label>
@@ -63,7 +63,7 @@
                 {{distance.center.pc}}, {{distance.center.town}}, {% if distance.center.province == 'BK'%}Bizkaia{% elif distance.center.province == 'GP' %}Araba{% elif distance.center.province == 'AB' %}Araba{% endif %}
               </address>
               <b>Distancia:</b> {{distance.distance.distance.text}}
-              <a href="https://www.google.com/maps/dir/{{origin.0}},{{origin.1}}/{{distance.center.lat}},{{distance.center.lng}}"><i class="fa fa-map-marker"></i> <a href="/report/{{distance.center.id}}"><i class="fa fa-flag"></i></a></a>
+              <a href="https://www.google.com/maps/dir/{{origin.0|stringformat:"f"}},{{origin.1|stringformat:"f"}}/{{distance.center.lat|stringformat:"f"}},{{distance.center.lng|stringformat:"f"}}"><i class="fa fa-map-marker"></i> <a href="/report/{{distance.center.id}}"><i class="fa fa-flag"></i></a></a>
             </div>
           </div>
         </div>
@@ -89,7 +89,7 @@
   <script type="text/javascript">
     var markers = [
       {% for distance in distances %}
-        ['{{distance.center.name}}', {{distance.center.lat}}, {{distance.center.lng}}, '{{distance.center.street}}', '{{distance.distance.distance.text}}']
+        ['{{distance.center.name}}', {{distance.center.lat|stringformat:"f"}}, {{distance.center.lng|stringformat:"f"}}, '{{distance.center.street}}', '{{distance.distance.distance.text}}']
         {% if not forloop.last %}
           ,
         {% endif %}
@@ -98,7 +98,7 @@
 
     function setMarkers(map) {
       for (var i = 0; i < markers.length; i++) {
-        var contentString = '<h1>' + markers[i][0] + '</h1><address>' + markers[i][3] + '</address><b>Distancia: </b>' + markers[i][4] + ' <a href="https://www.google.com/maps/dir/{{origin.0}},{{origin.1}}/' + markers[i][1] + ',' + markers[i][2] + '"><i class="fa fa-map-marker"></i></a>';
+        var contentString = '<h1>' + markers[i][0] + '</h1><address>' + markers[i][3] + '</address><b>Distancia: </b>' + markers[i][4] + ' <a href="https://www.google.com/maps/dir/{{origin.0|stringformat:"f"}},{{origin.1|stringformat:"f"}}/' + markers[i][1] + ',' + markers[i][2] + '"><i class="fa fa-map-marker"></i></a>';
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -122,7 +122,7 @@
     var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: {{origin.0}}, lng: {{origin.1}}},
+        center: {lat: {{origin.0|stringformat:"f"}}, lng: {{origin.1|stringformat:"f"}}},
         zoom: 14
       });
       setMarkers(map);

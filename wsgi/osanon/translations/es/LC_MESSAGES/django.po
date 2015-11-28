@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-25 18:23+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/templates/core/base.html:50 core/templates/core/base.html.py:73
+msgid "Tu dirección, p.ej.: Gran Via Bilbao"
+msgstr ""
+
+#: core/templates/core/base.html:52 core/templates/core/base.html.py:75
+msgid "Buscar"
+msgstr ""
+
+#: core/templates/core/base.html:64
+msgid "Bienvenido a Osanon"
+msgstr ""
+
+#: core/templates/core/base.html:65
+msgid ""
+"Osanon te permite buscar el centro de salud, hospital o farmacia más "
+"ceranos. Para ello, solamente tienes que buscar una dirección y pulsar "
+"<button class=\"btn btn-success\">Buscar</button> o pulsar el botón <a class="
+"\"btn btn-success\" onclick=\"getLocation()\"><i class=\"fa fa-location-arrow"
+"\"></i></a> para obtener tu ubicación:"
+msgstr ""
+
+#: core/templates/core/base.html:87
+msgid "Diseño responsivo"
+msgstr ""
+
+#: core/templates/core/base.html:88
+msgid ""
+"OsaNon está diseñado siguiendo el paradigma de <a href=\"https://en."
+"wikipedia.org/wiki/Responsive_web_design\">responsive web design</a>, por lo "
+"que se adaptará a todos los dispositivos ya sean teléfonos móviles, tablets "
+"u ordenadores."
+msgstr ""
+
+#: core/templates/core/base.html:92
+msgid ""
+"Todos los datos utilizados en OsaNon han sido obtenidos de <a href="
+"\"opendata.euskadi.eus\">Open Data Euskadi</a>."
+msgstr ""
+
+#: core/templates/core/base.html:95
+msgid "Colaborativo"
+msgstr ""
+
+#: core/templates/core/base.html:96
+msgid ""
+"Si encuentras algún error, puedes pulsar en el icono <i class=\"fa fa-flag"
+"\"></i> para informarnos. Estaremos muy agradecidos de recibir vuestra "
+"opinión ;-)"
+msgstr ""
+
+#: core/templates/core/contact.html:12
+msgid "Contacto"
+msgstr ""
+
+#: core/templates/core/contact.html:19
+msgid "Tu nombre"
+msgstr ""
+
+#: core/templates/core/contact.html:34
+msgid "Tu email"
+msgstr ""
+
+#: core/templates/core/contact.html:49
+#, python-format
+msgid "He encontrado un error en el centro: %(center_name)s"
+msgstr ""
+
+#: core/templates/core/contact.html:65
+msgid "Enviar"
+msgstr ""
+
+#: core/templates/core/contact_thanks.html:9
+msgid "Comentario enviado. Gracias por tu ayuda :)"
+msgstr ""

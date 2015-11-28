@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^results/(?P<lat>\-?\d+\.\d+)/(?P<lng>\-?\d+\.\d+)/(?P<offset>\d+)$', views.results_coordinates),
     url(r'^results/address$', views.results_address),
     url(r'^report/(?P<center_id>\d+)$', views.contact),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]

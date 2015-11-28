@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-25 17:36+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/templates/core/base.html:49 core/templates/core/base.html.py:72
+msgid "Tu dirección, p.ej.: Gran Via Bilbao"
+msgstr "Zure helbidea, adibides.: Gran Via Bilbao"
+
+#: core/templates/core/base.html:51 core/templates/core/base.html.py:74
+msgid "Buscar"
+msgstr "Bilatu"
+
+#: core/templates/core/base.html:63
+msgid "Bienvenido a Osanon"
+msgstr "Ongietorri Osanon-era"
+
+#: core/templates/core/base.html:64
+msgid ""
+"Osanon te permite buscar el centro de salud, hospital o farmacia más "
+"ceranos. Para ello, solamente tienes que buscar una dirección y pulsar "
+"<button class=\"btn btn-success\">Buscar</button> o pulsar el botón <a class="
+"\"btn btn-success\" onclick=\"getLocation()\"><i class=\"fa fa-location-arrow"
+"\"></i></a> para obtener tu ubicación:"
+msgstr ""
+"Osanon hurbileneko osasun zentro, ospitale edota farmazia bilatzeko aukera ematen dizu."
+"Horretarako, zure helbidea idatzi eta "
+"<button class=\"btn btn-success\">Bilatu</button> botoia sakatu edo <a class="
+"\"btn btn-success\" onclick=\"getLocation()\"><i class=\"fa fa-location-arrow"
+"\"></i></a> botoia sakatu zure kokalekua lortzeko:"
+
+#: core/templates/core/base.html:86
+msgid "Diseño responsivo"
+msgstr "\"Responsive\" diseinua"
+
+#: core/templates/core/base.html:87
+msgid ""
+"OsaNon está diseñado siguiendo el paradigma de <a href=\"https://en."
+"wikipedia.org/wiki/Responsive_web_design\">responsive web design</a>, por lo "
+"que se adaptará a todos los dispositivos ya sean teléfonos móviles, tablets "
+"u ordenadores."
+msgstr ""
+"OsaNon <a href=\"https://en."
+"wikipedia.org/wiki/Responsive_web_design\">responsive web design</a>, paradigma jarraituz diseinatuta dago, "
+"hortaz, dispositibo guztietara moldatuko da, sakeleko telefono, tablet edota konputagailua izan arren."
+
+#: core/templates/core/base.html:91
+msgid ""
+"Todos los datos utilizados en OsaNon han sido obtenidos de <a href="
+"\"opendata.euskadi.eus\">Open Data Euskadi</a>."
+msgstr ""
+"Osanonek erabilitako datu guztiak <a href="
+"\"opendata.euskadi.eus\">Open Data Euskadi</a>.-tik izan dira erauziak."
+
+#: core/templates/core/base.html:94
+msgid "Colaborativo"
+msgstr "Zuk ere parte hartu"
+
+#: core/templates/core/base.html:95
+msgid ""
+"Si encuentras algún error, puedes pulsar en el icono <i class=\"fa fa-flag"
+"\"></i> para informarnos. Estaremos muy agradecidos de recibir vuestra "
+"opinión ;-)"
+msgstr ""
+"Edozein akats aurkitzen baduzu, <i class=\"fa fa-flag"
+"\"></i> ikonoa sakatu dezakezu gu ohartaratzeko. Mila esker zuen iritsia bidaltzeagatik ;-)"
+
+#: core/templates/core/contact.html:12
+msgid "Contacto"
+msgstr "Harremanetan jarri"
+
+#: core/templates/core/contact.html:19
+msgid "Tu nombre"
+msgstr "Zure izena"
+
+#: core/templates/core/contact.html:34
+msgid "Tu email"
+msgstr "Zure posta elektronikoa"
+
+#: core/templates/core/contact.html:49
+#, python-format
+msgid "He encontrado un error en el centro: %(center_name)s"
+msgstr "Akats bat aurkitu dut zentro honetan: %(center_name)s"
+
+#: core/templates/core/contact.html:65
+msgid "Enviar"
+msgstr "Bidali"
+
+#: core/templates/core/contact_thanks.html:9
+msgid "Comentario enviado. Gracias por tu ayuda :)"
+msgstr "Iruzkina bidalia izan da. Mila esker zure laguntzagatik :)"

@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,7 +100,14 @@
         <hr>
       {% endblock %}
       <footer style="padding-left: 50px;">
-        <p>&copy; Company 2014</p>
+        <form class="span1 pull-left" name="setLang" action="{% url 'set_language' %}" method="POST">{% csrf_token %}
+                <select name="language" onchange="document.setLang.submit();return false;">
+                    <option {% if LANGUAGE_CODE == "eu" %}selected{% endif %} value="eu">Euskera</option>
+                    <option {% if LANGUAGE_CODE == "es" %}selected{% endif %} value="es">Español</option>
+                </select>
+                <input name="next" type="hidden" value="/" />
+            </form>
+
       </footer>
     </div> <!-- /container -->
 
