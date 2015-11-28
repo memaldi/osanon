@@ -1,5 +1,3 @@
-# -*- coding: iso-8859-15 -*-
-
 from django.shortcuts import render, redirect
 from django.utils.translation import get_language
 from django.core.mail import send_mail
@@ -19,7 +17,6 @@ def contact(request, center_id):
     center = Center.objects.get(id=center_id)
     if request.method == 'POST':
         form = forms.ContactForm(request.POST)
-        print form
         if form.is_valid():
             send_mail('[OsaNon] Error en el centro #%s' % center_id,
                       form.data['text'], form.data['email'],
@@ -46,7 +43,6 @@ def results_coordinates(request, lat, lng, offset=1):
     else:
         centers = Center.objects.filter(language=lang).all()
 
-    print lat, lng
     destinations = {}
     item_count = 0
 
@@ -68,10 +64,8 @@ def results_coordinates(request, lat, lng, offset=1):
     destinations_list = []
 
     limit = 10 * int(offset)
-    print limit, (int(offset) - 1) * 10
     for item in ordered_list[(int(offset) - 1) * 10:limit]:
         destinations_list.append((item.lat, item.lng))
-        print item.name, key, item.lat, item.lng, item.street
 
     gmaps = googlemaps.Client(key=GOOGLE_MAPS_KEY)
     distances = gmaps.distance_matrix([(float(lat), float(lng))], destinations_list, mode='walking')
