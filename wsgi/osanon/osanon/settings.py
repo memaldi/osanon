@@ -162,9 +162,9 @@ else:
 
 if ON_OPENSHIFT:
     LOCALE_PATHS = (
-        os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'pelotus', 'translations'),
+        os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'osanon', 'translations'),
     )
 else:
     LOCALE_PATHS = (
-        os.path.join(BASE_DIR, 'osanon/translations'),
+        '/Users/memaldi/virtualenvs/osanon/src/osanon/wsgi/osanon/translations',
     )
