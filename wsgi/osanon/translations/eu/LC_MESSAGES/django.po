@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-25 17:36+0000\n"
+"POT-Creation-Date: 2015-11-28 12:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/templates/core/base.html:49 core/templates/core/base.html.py:72
+#: core/templates/core/base.html:50 core/templates/core/base.html.py:73
 msgid "Tu dirección, p.ej.: Gran Via Bilbao"
 msgstr "Zure helbidea, adibides.: Gran Via Bilbao"
 
-#: core/templates/core/base.html:51 core/templates/core/base.html.py:74
+#: core/templates/core/base.html:52 core/templates/core/base.html.py:75
 msgid "Buscar"
 msgstr "Bilatu"
 
-#: core/templates/core/base.html:63
+#: core/templates/core/base.html:64
 msgid "Bienvenido a Osanon"
 msgstr "Ongietorri Osanon-era"
 
-#: core/templates/core/base.html:64
+#: core/templates/core/base.html:65
 msgid ""
 "Osanon te permite buscar el centro de salud, hospital o farmacia más "
 "ceranos. Para ello, solamente tienes que buscar una dirección y pulsar "
@@ -38,47 +38,48 @@ msgid ""
 "\"btn btn-success\" onclick=\"getLocation()\"><i class=\"fa fa-location-arrow"
 "\"></i></a> para obtener tu ubicación:"
 msgstr ""
-"Osanon hurbileneko osasun zentro, ospitale edota farmazia bilatzeko aukera ematen dizu."
-"Horretarako, zure helbidea idatzi eta "
-"<button class=\"btn btn-success\">Bilatu</button> botoia sakatu edo <a class="
-"\"btn btn-success\" onclick=\"getLocation()\"><i class=\"fa fa-location-arrow"
-"\"></i></a> botoia sakatu zure kokalekua lortzeko:"
+"Osanon hurbileneko osasun zentro, ospitale edota farmazia bilatzeko aukera "
+"ematen dizu.Horretarako, zure helbidea idatzi eta <button class=\"btn btn-"
+"success\">Bilatu</button> botoia sakatu edo <a class=\"btn btn-success\" "
+"onclick=\"getLocation()\"><i class=\"fa fa-location-arrow\"></i></a> botoia "
+"sakatu zure kokalekua lortzeko:"
 
-#: core/templates/core/base.html:86
+#: core/templates/core/base.html:87
 msgid "Diseño responsivo"
 msgstr "\"Responsive\" diseinua"
 
-#: core/templates/core/base.html:87
+#: core/templates/core/base.html:88
 msgid ""
 "OsaNon está diseñado siguiendo el paradigma de <a href=\"https://en."
 "wikipedia.org/wiki/Responsive_web_design\">responsive web design</a>, por lo "
 "que se adaptará a todos los dispositivos ya sean teléfonos móviles, tablets "
 "u ordenadores."
 msgstr ""
-"OsaNon <a href=\"https://en."
-"wikipedia.org/wiki/Responsive_web_design\">responsive web design</a>, paradigma jarraituz diseinatuta dago, "
-"hortaz, dispositibo guztietara moldatuko da, sakeleko telefono, tablet edota konputagailua izan arren."
+"OsaNon <a href=\"https://en.wikipedia.org/wiki/Responsive_web_design"
+"\">responsive web design</a>, paradigma jarraituz diseinatuta dago, hortaz, "
+"dispositibo guztietara moldatuko da, sakeleko telefono, tablet edota "
+"konputagailua izan arren."
 
-#: core/templates/core/base.html:91
+#: core/templates/core/base.html:92
 msgid ""
 "Todos los datos utilizados en OsaNon han sido obtenidos de <a href="
 "\"opendata.euskadi.eus\">Open Data Euskadi</a>."
 msgstr ""
-"Osanonek erabilitako datu guztiak <a href="
-"\"opendata.euskadi.eus\">Open Data Euskadi</a>.-tik izan dira erauziak."
+"Osanonek erabilitako datu guztiak <a href=\"opendata.euskadi.eus\">Open Data "
+"Euskadi</a>.-tik izan dira erauziak."
 
-#: core/templates/core/base.html:94
+#: core/templates/core/base.html:95
 msgid "Colaborativo"
 msgstr "Zuk ere parte hartu"
 
-#: core/templates/core/base.html:95
+#: core/templates/core/base.html:96
 msgid ""
 "Si encuentras algún error, puedes pulsar en el icono <i class=\"fa fa-flag"
 "\"></i> para informarnos. Estaremos muy agradecidos de recibir vuestra "
 "opinión ;-)"
 msgstr ""
-"Edozein akats aurkitzen baduzu, <i class=\"fa fa-flag"
-"\"></i> ikonoa sakatu dezakezu gu ohartaratzeko. Mila esker zuen iritsia bidaltzeagatik ;-)"
+"Edozein akats aurkitzen baduzu, <i class=\"fa fa-flag\"></i> ikonoa sakatu "
+"dezakezu gu ohartaratzeko. Mila esker zuen iritsia bidaltzeagatik ;-)"
 
 #: core/templates/core/contact.html:12
 msgid "Contacto"
@@ -104,3 +105,27 @@ msgstr "Bidali"
 #: core/templates/core/contact_thanks.html:9
 msgid "Comentario enviado. Gracias por tu ayuda :)"
 msgstr "Iruzkina bidalia izan da. Mila esker zure laguntzagatik :)"
+
+#: core/templates/core/results.html:20
+msgid "Farmacias"
+msgstr "Farmaziak"
+
+#: core/templates/core/results.html:25
+msgid "Hospitales"
+msgstr "Ospitaleak"
+
+#: core/templates/core/results.html:29
+msgid "Centros de salud"
+msgstr "Osasun zentroak"
+
+#: core/templates/core/results.html:34
+msgid "Botiquines"
+msgstr "Botikinak"
+
+#: core/templates/core/results.html:39
+msgid "Centros comarcales"
+msgstr "Eskualde zentroak"
+
+#: core/templates/core/results.html:43
+msgid "Filtrar"
+msgstr "Iragazi"

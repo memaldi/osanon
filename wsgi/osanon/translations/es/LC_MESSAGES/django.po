@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-25 18:23+0000\n"
+"POT-Creation-Date: 2015-11-28 12:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,4 +91,28 @@ msgstr ""
 
 #: core/templates/core/contact_thanks.html:9
 msgid "Comentario enviado. Gracias por tu ayuda :)"
+msgstr ""
+
+#: core/templates/core/results.html:20
+msgid "Farmacias"
+msgstr ""
+
+#: core/templates/core/results.html:25
+msgid "Hospitales"
+msgstr ""
+
+#: core/templates/core/results.html:29
+msgid "Centros de salud"
+msgstr ""
+
+#: core/templates/core/results.html:34
+msgid "Botiquines"
+msgstr ""
+
+#: core/templates/core/results.html:39
+msgid "Centros comarcales"
+msgstr ""
+
+#: core/templates/core/results.html:43
+msgid "Filtrar"
 msgstr ""
