@@ -166,5 +166,5 @@ if ON_OPENSHIFT:
     )
 else:
     LOCALE_PATHS = (
-        '/Users/memaldi/virtualenvs/osanon/src/osanon/wsgi/osanon/translations',
+        os.path.join(BASE_DIR, 'osanon/translations'),
     )
