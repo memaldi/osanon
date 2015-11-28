@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-28 12:39+0100\n"
+"POT-Creation-Date: 2015-11-28 19:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: core/templates/core/base.html:50 core/templates/core/base.html.py:73
+#: core/templates/core/base.html:52 core/templates/core/base.html.py:86
 msgid "Tu dirección, p.ej.: Gran Via Bilbao"
 msgstr "Zure helbidea, adibides.: Gran Via Bilbao"
 
-#: core/templates/core/base.html:52 core/templates/core/base.html.py:75
+#: core/templates/core/base.html:54 core/templates/core/base.html.py:88
 msgid "Buscar"
 msgstr "Bilatu"
 
-#: core/templates/core/base.html:64
+#: core/templates/core/base.html:77
 msgid "Bienvenido a Osanon"
 msgstr "Ongietorri Osanon-era"
 
-#: core/templates/core/base.html:65
+#: core/templates/core/base.html:78
 msgid ""
 "Osanon te permite buscar el centro de salud, hospital o farmacia más "
 "ceranos. Para ello, solamente tienes que buscar una dirección y pulsar "
@@ -44,11 +44,11 @@ msgstr ""
 "onclick=\"getLocation()\"><i class=\"fa fa-location-arrow\"></i></a> botoia "
 "sakatu zure kokalekua lortzeko:"
 
-#: core/templates/core/base.html:87
+#: core/templates/core/base.html:100
 msgid "Diseño responsivo"
 msgstr "\"Responsive\" diseinua"
 
-#: core/templates/core/base.html:88
+#: core/templates/core/base.html:101
 msgid ""
 "OsaNon está diseñado siguiendo el paradigma de <a href=\"https://en."
 "wikipedia.org/wiki/Responsive_web_design\">responsive web design</a>, por lo "
@@ -60,7 +60,7 @@ msgstr ""
 "dispositibo guztietara moldatuko da, sakeleko telefono, tablet edota "
 "konputagailua izan arren."
 
-#: core/templates/core/base.html:92
+#: core/templates/core/base.html:105
 msgid ""
 "Todos los datos utilizados en OsaNon han sido obtenidos de <a href="
 "\"opendata.euskadi.eus\">Open Data Euskadi</a>."
@@ -68,11 +68,11 @@ msgstr ""
 "Osanonek erabilitako datu guztiak <a href=\"opendata.euskadi.eus\">Open Data "
 "Euskadi</a>.-tik izan dira erauziak."
 
-#: core/templates/core/base.html:95
+#: core/templates/core/base.html:108
 msgid "Colaborativo"
 msgstr "Zuk ere parte hartu"
 
-#: core/templates/core/base.html:96
+#: core/templates/core/base.html:109
 msgid ""
 "Si encuentras algún error, puedes pulsar en el icono <i class=\"fa fa-flag"
 "\"></i> para informarnos. Estaremos muy agradecidos de recibir vuestra "
@@ -106,26 +106,30 @@ msgstr "Bidali"
 msgid "Comentario enviado. Gracias por tu ayuda :)"
 msgstr "Iruzkina bidalia izan da. Mila esker zure laguntzagatik :)"
 
-#: core/templates/core/results.html:20
+#: core/templates/core/results.html:31
 msgid "Farmacias"
 msgstr "Farmaziak"
 
-#: core/templates/core/results.html:25
+#: core/templates/core/results.html:36
 msgid "Hospitales"
 msgstr "Ospitaleak"
 
-#: core/templates/core/results.html:29
+#: core/templates/core/results.html:40
 msgid "Centros de salud"
 msgstr "Osasun zentroak"
 
-#: core/templates/core/results.html:34
+#: core/templates/core/results.html:45
 msgid "Botiquines"
 msgstr "Botikinak"
 
-#: core/templates/core/results.html:39
+#: core/templates/core/results.html:50
 msgid "Centros comarcales"
 msgstr "Eskualde zentroak"
 
-#: core/templates/core/results.html:43
+#: core/templates/core/results.html:54
 msgid "Filtrar"
 msgstr "Iragazi"
+
+#: core/templates/core/results.html:72 core/templates/core/results.html:111
+msgid "Distancia"
+msgstr "Distantzia"
