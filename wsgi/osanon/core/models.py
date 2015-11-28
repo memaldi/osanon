@@ -19,7 +19,7 @@ class Center(models.Model):
         (ARABA, 'Araba')
     )
     province = models.CharField(max_length=20, choices=PROVINCE_CHOICES, default=BIZKAIA)
-    town = models.CharField(max_length=30)
+    town = models.CharField(max_length=50)
     BOTIQUIN = 'BT'
     CENTRO_DE_SALUD = 'CS'
     HOSPITALES = 'HT'
