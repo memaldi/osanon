@@ -93,14 +93,31 @@ WSGI_APPLICATION = 'osanon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        # GETTING-STARTED: change 'db.sqlite3' to your sqlite3 database:
-        'NAME': os.path.join(DATA_DIR, 'db.sqlite3'),
+if ON_OPENSHIFT:
+    # os.environ['OPENSHIFT_MYSQL_DB_*'] variables can be used with databases created
+    # with rhc cartridge add (see /README in this git repo)
+    url = urlparse.urlparse(os.environ.get('OPENSHIFT_POSTGRESQL_DB_URL'))
+    DATABASES = {
+        'default': {
+            'ENGINE' : 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['OPENSHIFT_APP_NAME'],
+            'USER': url.username,
+            'PASSWORD': url.password,
+            'HOST': url.hostname,
+            'PORT': url.port,
+        }
     }
-}
-
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': os.path.join(PROJECT_DIR, 'db.sqlite3'),  # Or path to database file if using sqlite3.
+            'USER': '',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
+    }
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
