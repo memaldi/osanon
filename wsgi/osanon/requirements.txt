@@ -1,0 +1,5 @@
+Django==1.8.4
+geopy==1.11.0
+googlemaps==2.3
+requests==2.6.0
+wsgiref==0.1.2
