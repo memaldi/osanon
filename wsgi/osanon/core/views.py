@@ -1,3 +1,5 @@
+# -*- coding: iso-8859-15 -*-
+
 from django.shortcuts import render, redirect
 from django.utils.translation import get_language
 from django.core.mail import send_mail
