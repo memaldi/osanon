@@ -148,7 +148,6 @@
         if (navigator.geolocation) {
             console.log(self)
             $("#" + id).html('<i class="fa fa-spinner fa-spin"></i>');
-            return 0;
             navigator.geolocation.getCurrentPosition(success, error);
         } else {
             console.log("Geolocation is not supported by this browser.");
