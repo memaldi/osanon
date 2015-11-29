@@ -20,7 +20,7 @@ msgstr ""
 
 #: core/templates/core/base.html:52 core/templates/core/base.html.py:86
 msgid "Tu dirección, p.ej.: Gran Via Bilbao"
-msgstr "Zure helbidea, adibides.: Gran Via Bilbao"
+msgstr "Zure helbidea, adibidez: Gran Via Bilbao"
 
 #: core/templates/core/base.html:54 core/templates/core/base.html.py:88
 msgid "Buscar"
